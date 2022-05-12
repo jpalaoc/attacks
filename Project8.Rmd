@@ -1,0 +1,61 @@
+---
+title: "Tipos de Ataques Ciberneticos con IPs y Puertos Vulnerables"
+author: "Grupo 8"
+date: '2022-05-12'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducción
+En un ecosistema emergente y con brechas disruptivas, el ciberespacio se hizo vulnerable por ataques cibernéticos ingresando a la ot - it, esto nos lleva a mirar al futuro con mayor análisis y dar una visibilidad holística en cuanto se refiere a la ciberseguridad industrial e informática. Para ello vamos a tomar decisiones más inteligentes para las organizaciones a través de la data science.
+
+## Antecedentes
+Hace 20 años el 22 de julio de 1999 ocurrió un suceso oscuro en la historia de la computación, el primer ataque ddos hasta la actualidad este va relacionando con los ataques de ransomware raas con la triple extorción.
+Para nuestro caso de estudio malware el conjunto de datos unsw-nb15 tiene nueve familias de ataques, a saber, fuzzers, analysis, backdoors, dos, exploits, generic, reconnaissance, shellcode y worms. Se utilizan las herramientas argus, bro-ids.
+
+## Problema
+¿cuáles son los ataques más frecuentes?, ¿de dónde proceden los ataques más frecuentes? Y ¿qué puertos son más vulnerables?
+
+## Objetivo
+Analizar los tipos de ataques cibernéticos más frecuentes, procedencia y puertos más vulnerables
+
+## Hipótesis 
+Identificar tipos de ataques más frecuentes
+Identificar la procedencia de los ataques por ips
+Identificar los puertos más vulnerables 
+
+## Análisis del proyecto a investigar
+
+#Datasets
+
+```{r Dataset}
+data <- read.csv("D:/GIT/attacks/data.csv", sep=";")
+View(data)
+
+```
+
+#Standards
+
+
+```{r cars}
+summary(cars)
+```
+
+#Packages
+
+
+
+
+
+## Including Plots
+
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+

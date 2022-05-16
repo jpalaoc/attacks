@@ -204,6 +204,41 @@ points(y=data$DestinationPort, cex = .10000, col = "green dark")
 
 plot(x=TCP$newCategory, y=TCP$DestinationPort, pch=1.3, col="blue")
 
+#INSTALACIÓN EL PACKAGE RGEOLOCATE, MAPS, MAXMIND, RWORLDMAP  149.171.126.16- 175.45.176.3
+
+install.packages("rgeolocate")
+
+library(rgeolocate)
+
+file <- system.file("extdata","GeoLite2-Country.mmdb", package = "rgeolocate")
+results <- maxmind("175.45.176.3", file, c("continent_name", "country_code", "country_name"))
+results
+
+install.packages("maps")
+library(maps)
+
+install.packages("rworldmap")
+library(rworldmap)
+joinCountryData2Map()
+
+IPexploits <- "175.45.176.3"
+View()
+CountryName <- rgeolocate::maxmind("175.45.176.3", "~/GeoLite2-Country.mmdb", fields = c("continent_name", "country_name", "country_code"))
+
+
+TCP$IP <- "175.45.176.3"
+file <- system.file("TCP$IP","GeoLite2-Country.mmdb", package = "rgeolocate")
+results <- maxmind("IPexploits", file, c("continent_name", "country_code", "country_name"))
+results
+
+rgeolocate::maxmind("TCP$IPexploits", "GeoLite2-Country.mmdb", fields = c("continent_name", "country_name", "country_code"))
+
+
+View(TCP)
+rgeolocate::maxmind(TCP$IP, "D:/GIT/attack/GeoLite2-Country.mmdb", fields = c("continent_name", "country_name", "country_code"))
+rgeolocate::maxmind(TCP$IP, "C:/Users/Acer/Desktop/GeoLite2-Country.mmdb", fields = c("continent_name", "country_name", "country_code"))
+
+
 
 
 

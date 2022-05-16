@@ -148,6 +148,8 @@ plot(data$Referencias)
 TCP <- data[data$Protocols == 'tcp', ] #Seleccionar el frame de acuerto a un tipo de protocolo
 View(TCP)
 
+write.csv2(TCP, "TCP.csv")
+
 TCP$Referencias <- NULL
 TCP$Category <- NULL
 TCP$necategory <- NULL

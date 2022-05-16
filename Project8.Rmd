@@ -45,6 +45,7 @@ View(data)
 # https://github.com/rstudio/cheatsheets/blob/main/strings.pdf
 
 # https://github.com/jpalaoc/attacks
+# https://cran.r-project.org/web/packages/ggtext/vignettes/plotting_text.html
 
 ```
 
@@ -243,3 +244,60 @@ plot(data$Nombredeataque)
 plot(data$Referencias)
 
 ```
+
+
+
+
+## RESULTADOS DEL ANÁLISIS SEGÚN LAS PREGUNTAS 
+
+#¿cuáles son los ataques más frecuentes?
+
+```{r }
+
+data$newCategory <- as.factor(data$necategory)
+plot(data$newCategory)
+
+```
+
+
+#¿de dónde proceden los ataques más frecuentes?
+
+
+
+```{r }
+unique(data$SourceIP)
+
+ggplot(data , aes(fill=SourceIP, y=Protocols, x=newCategory)) + geom_bar(position="stack",stat='identity')+ xlab("NOMBRE DE ATAQUES") + ylab("VULNERABILIDADES") + ggtitle("ANÁLISIS DE ATAQUES MÁS FRECUENTES")
+
+ggplot(TCP , aes(fill=IPSource, y=Protocols, x=newCategory)) + geom_bar(position="stack",stat='identity')+ xlab("ORIGEN DE ATAQUE") + ylab("VULNERABILIDADES") + ggtitle("ANÁLISIS DE ATAQUES MÁS FRECUENTES") + geom_smooth(method = "lm")
+
+```
+
+
+#¿qué puertos son más vulnerables?
+
+
+```{r }
+
+unique(data$SourcePort)
+plot(data$SourcePort)
+
+unique(data$DestinationPort)
+plot(data$DestinationPort)
+
+
+unique(TCP$DestinationPort)
+plot(x=TCP$Protocols, y=TCP$DestinoPuerto, pch=1.3, col="blue")
+
+plot(x=data$Category, y=data$DestinationPort, pch=1.3, col="blue")
+points(x=data$Category, cex = .10000, col = "dark red")
+points(y=data$DestinationPort, cex = .10000, col = "green dark")
+
+plot(x=TCP$newCategory, y=TCP$DestinationPort, pch=1.3, col="blue")
+
+
+```
+
+
+## CONCLUSIONES 
+

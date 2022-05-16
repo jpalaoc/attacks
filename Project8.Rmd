@@ -74,6 +74,8 @@ library(dplyr)
 ?summarise
 ?group_by
 
+RGEOLOCATE, MAPS, MAXMIND, RWORLDMAP 
+
 
 
 ## Including Plots
@@ -328,7 +330,15 @@ plot(x=TCP$newCategory, y=TCP$DestinationPort, pch=1.3, col="blue")
 
 
 ```
+#INSTALACIÓN EL PACKAGE RGEOLOCATE, MAPS, MAXMIND, RWORLDMAP  149.171.126.16- 175.45.176.3
 
+```{r }
+
+file <- system.file("extdata","GeoLite2-Country.mmdb", package = "rgeolocate")
+results <- maxmind("175.45.176.3", file, c("continent_name", "country_code", "country_name"))
+results
+
+```
 
 ## CONCLUSIONES 
 

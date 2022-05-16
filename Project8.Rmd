@@ -34,8 +34,16 @@ Identificar los puertos más vulnerables
 ```{r Dataset}
 data <- read.csv("D:/GIT/attacks/data.csv", sep=";")
 View(data)
-
 ```
+
+
+
+```{r Dataset}
+TCP <- read.csv("D:/GIT/attacks/TCP.csv", sep=";")
+View(TCP)
+```
+
+
 
 #Standards
 
@@ -51,7 +59,20 @@ View(data)
 
 #Packages
 
+install.packages("ggplot2")
+library(ggplot2)
 
+install.packages("boxplot")
+install.packages("dplyr")
+library(devtools)
+install_github("hadley/dplyr")
+library(dplyr)
+?select
+?filter
+?arrange
+?mutate
+?summarise
+?group_by
 
 
 
@@ -97,7 +118,7 @@ iris_facets +
 
 ```
 
-## RESULTADOS
+## INTEGRACIÓN PARA EL ANÁLISIS
 
 ```{r }
 
@@ -252,6 +273,10 @@ plot(data$Referencias)
 
 #¿cuáles son los ataques más frecuentes?
 
+según nuestro análisis, tenemos: Backdoor, Exploits, Generic, Shellcode el que tiene mayor ponderado es  el ataque por  EXPLOITS
+
+
+
 ```{r }
 
 data$newCategory <- as.factor(data$necategory)
@@ -261,6 +286,10 @@ plot(data$newCategory)
 
 
 #¿de dónde proceden los ataques más frecuentes?
+
+Para este análisis consideramos  evaluar  los ataques más frecuentes, Protocolos afectados respecto al origen de la IP, para identificar de dónde se realizo los ataques. 
+
+DANDO COMO RESULTADO LOS ATAQUES TIENEN COMO ORIGEN COREA DEL NORTE Y DE DESTINO AUSTRALIA PARA EL CASO DE NUESTRA INVESTIGACIÓN
 
 
 
@@ -275,6 +304,8 @@ ggplot(TCP , aes(fill=IPSource, y=Protocols, x=newCategory)) + geom_bar(position
 
 
 #¿qué puertos son más vulnerables?
+
+Al analizar identificamos en principio con unique los valores que se tiene  para tener un mejor mapeo  en la integración de vulnerabilidades Origen del PUERTO y destiNo del PUERTO. En el que se viualiza un gran numero de puertos afectados, por lo que tuvimos que segmentar por TCP para ver los puertos más vulnerables y nos da como resultado según los graficos valorizando en función al valor del puerto como es el caso de 0-1000, 1000-3000 y 3000-5000 en adelante. como nos muestra en la imagen.
 
 
 ```{r }
@@ -300,4 +331,8 @@ plot(x=TCP$newCategory, y=TCP$DestinationPort, pch=1.3, col="blue")
 
 
 ## CONCLUSIONES 
+
+El desarrollo del análisis para identificar los tipos de ataques Ciberneticos con IPs y Puertos Vulnerables en función de la organización afectada, se logro identificar los nombres de los atques más frecuentes,  el origen de los ataques y los puertos más vulnerables en función a las preguntas planteadas en un principio.
+
+Esto nos da una mejor visibilidad al análisis. 
 

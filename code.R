@@ -56,6 +56,11 @@ data$necategory <- str_replace(data$necategory, "[NA]", NA_character_) #
 data %>% group_by(necategory) %>% summarise( n=n()) #NÚMERO DE ATAQUES POR CATEGORIA
 unique(data$necategory) #VERIFICAR DUPLICIDAD 
 
+data$newCategory <- as.factor(data$necategory)
+plot(data$newCategory)
+unique(newcategory)
+
+
 #Verificar duplicados y unificar a una sola variable en IPs
 
 levels(data$SourceIP)
@@ -140,17 +145,62 @@ plot(data$DestinoPuerto)
 plot(data$Nombredeataque)
 plot(data$Referencias)
 
+TCP <- data[data$Protocols == 'tcp', ] #Seleccionar el frame de acuerto a un tipo de protocolo
+View(TCP)
+
+TCP$Referencias <- NULL
+TCP$Category <- NULL
+TCP$necategory <- NULL
+TCP$nombredeataque <- NULL
+TCP$neprotocols <- NULL
+TCP$Protcolo <- NULL
+TCP$SourceIP <- NULL
+TCP$OrigenIP <- NULL
+
+
+ggplot(TCP , aes(fill=IPSource, y=Protocols, x=newCategory)) + geom_bar(position="stack",stat='identity')
+
+UDP <- dat12[dat12$Protcolo == 'udp', ] #Seleccionar el frame de acuerto a un tipo de protocolo
+View(TCP)
 
 
 
 
+##RESULTADOS
+
+#¿cuáles son los ataques más frecuentes?,
+
+data$newCategory <- as.factor(data$necategory)
+plot(data$newCategory)
+
+
+#¿de dónde proceden los ataques más frecuentes?
+
+unique(data$SourceIP)
+
+ggplot(data , aes(fill=SourceIP, y=Protocols, x=newCategory)) + geom_bar(position="stack",stat='identity')+ xlab("NOMBRE DE ATAQUES") + ylab("VULNERABILIDADES") + ggtitle("ANÁLISIS DE ATAQUES MÁS FRECUENTES")
+
+ggplot(TCP , aes(fill=IPSource, y=Protocols, x=newCategory)) + geom_bar(position="stack",stat='identity')+ xlab("ORIGEN DE ATAQUE") + ylab("VULNERABILIDADES") + ggtitle("ANÁLISIS DE ATAQUES MÁS FRECUENTES") + geom_smooth(method = "lm")
 
 
 
+#¿qué puertos son más vulnerables?
+
+unique(data$SourcePort)
+plot(data$SourcePort)
+
+unique(data$DestinationPort)
+plot(data$DestinationPort)
 
 
+unique(TCP$DestinationPort)
+plot(x=TCP$Protocols, y=TCP$DestinoPuerto, pch=1.3, col="blue")
 
+plot(x=data$Category, y=data$DestinationPort, pch=1.3, col="blue")
+points(x=data$Category, cex = .10000, col = "dark red")
+points(y=data$DestinationPort, cex = .10000, col = "green dark")
 
+plot(x=TCP$newCategory, y=TCP$DestinationPort, pch=1.3, col="blue")
 
 
 
